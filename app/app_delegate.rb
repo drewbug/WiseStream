@@ -7,7 +7,7 @@ class AppDelegate < PM::Delegate
   end
 
   def initialize_storage
-    {clock_enabled: false}.each do |key, value|
+    {compass_enabled: false, clock_enabled: false}.each do |key, value|
       App::Persistence[key] = value if App::Persistence[key].nil?
     end
   end
