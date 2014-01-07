@@ -3,8 +3,9 @@ class HomeScreen < PM::FormotionScreen
 
   def self.new(args = {})
     super.tap do |s|
-      s.form.sections[0].rows[0].on_tap { s.compass_tapped }
-      s.form.sections[0].rows[1].on_tap { s.clock_tapped }
+      s.form.sections[0].rows[0].on_tap { s.general_tapped }
+      s.form.sections[1].rows[0].on_tap { s.compass_tapped }
+      s.form.sections[1].rows[1].on_tap { s.clock_tapped }
     end
   end
 
@@ -16,10 +17,16 @@ class HomeScreen < PM::FormotionScreen
     hash = { sections: [] }
 
     hash[:sections][0] = { rows: [] }
-    hash[:sections][0][:rows][0] = { title: 'Compass', key: :compass, type: :subform, image: 'compass' }
-    hash[:sections][0][:rows][1] = { title: 'Clock', key: :clock, type: :subform, image: 'clock' }
+    hash[:sections][0][:rows][0] = { title: 'General', key: :general, type: :subform, image: 'general' }
+
+    hash[:sections][1] = { rows: [] }
+    hash[:sections][1][:rows][0] = { title: 'Compass', key: :compass, type: :subform, image: 'compass' }
+    hash[:sections][1][:rows][1] = { title: 'Clock', key: :clock, type: :subform, image: 'clock' }
 
     return hash
+  end
+
+  def general_tapped
   end
 
   def compass_tapped
