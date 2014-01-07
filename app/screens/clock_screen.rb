@@ -21,6 +21,6 @@ class ClockScreen < PM::FormotionScreen
   end
 
   def enabled_switched(value)
-    App::Persistence[:clock_enabled] = value
+    App.states[:clock_streamer].enabled = value
   end
 end

@@ -3,6 +3,7 @@ class AppDelegate < PM::Delegate
 
   def on_load(app, options)
     initialize_storage
+    initialize_audio
     open HomeScreen.new(nav_bar: true)
   end
 
@@ -10,5 +11,11 @@ class AppDelegate < PM::Delegate
     {compass_enabled: false, clock_enabled: false}.each do |key, value|
       App::Persistence[key] = value if App::Persistence[key].nil?
     end
+  end
+
+  def initialize_audio
+    App.states[:audio_context] = Pachelbel::AudioContext.new
+    App.states[:compass_streamer] = CompassStreamer.new App.states[:audio_context]
+    App.states[:clock_streamer] = ClockStreamer.new App.states[:audio_context]
   end
 end

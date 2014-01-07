@@ -21,6 +21,6 @@ class CompassScreen < PM::FormotionScreen
   end
 
   def enabled_switched(value)
-    App::Persistence[:compass_enabled] = value
+    App.states[:compass_streamer].enabled = value
   end
 end
