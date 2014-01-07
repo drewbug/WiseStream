@@ -9,6 +9,7 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
+    Pachelbel (1.1.3)
     ProMotion (1.1.1)
       methadone
     bubble-wrap (1.4.0)
@@ -21,6 +22,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  Pachelbel
   ProMotion (~> 1.1.1)
   bubble-wrap
   formotion!
