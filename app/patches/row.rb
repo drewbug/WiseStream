@@ -3,5 +3,9 @@ module Formotion
     def on_switch(&block)
       self.object.on_switch(&block)
     end
+
+    def on_slide(&block)
+      self.object.on_slide(&block)
+    end
   end
 end
