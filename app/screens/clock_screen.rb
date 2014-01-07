@@ -4,6 +4,7 @@ class ClockScreen < PM::FormotionScreen
   def self.new(args = {})
     super.tap do |s|
       s.form.sections[0].rows[0].on_switch { |v| s.enabled_switched(v) }
+      s.form.sections[1].rows[0].on_slide { |v| s.volume_slid(v) }
     end
   end
 
@@ -17,10 +18,17 @@ class ClockScreen < PM::FormotionScreen
     hash[:sections][0] = { rows: [] }
     hash[:sections][0][:rows][0] = { title: 'Enabled?', key: :enabled, type: :switch, value: App::Persistence[:clock_enabled] }
 
+    hash[:sections][1] = { rows: [] }
+    hash[:sections][1][:rows][0] = { title: 'Volume', key: :volume, type: :slider, range: (0..1), value: App::Persistence[:clock_volume] }
+
     return hash
   end
 
   def enabled_switched(value)
     App.states[:clock_streamer].enabled = value
+  end
+
+  def volume_slid(value)
+    App.states[:clock_streamer].volume = value
   end
 end
