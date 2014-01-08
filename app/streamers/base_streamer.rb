@@ -12,13 +12,12 @@ class BaseStreamer
   end
 
   def volume
-    App::Persistence[:"#{__key__}_volume"]
-    @gain_node.gain if not @audio_context.locked
+    @gain_node.gain
   end
 
   def volume=(value)
     App::Persistence[:"#{__key__}_volume"] = value
-    @gain_node.gain = value if not @audio_context.locked
+    @gain_node.gain = value
   end
 
   def enabled?
@@ -27,9 +26,6 @@ class BaseStreamer
 
   def enabled=(value)
     App::Persistence[:"#{__key__}_enabled"] = value
-    if not @audio_context.locked
-      if value == true then @gain_node.connect @audio_context.destination
-      elsif value == false then @gain_node.disconnect end
-    end
+    !!value ? @gain_node.connect(@audio_context.destination) : @gain_node.disconnect
   end
 end
