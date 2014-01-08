@@ -9,4 +9,5 @@ Motion::Project::App.setup do |app|
   # Use `rake config' to see complete project settings.
   app.name = 'WiseStream'
   app.info_plist['UIBackgroundModes'] = ['audio']
+  app.deployment_target = '6.1'
 end
