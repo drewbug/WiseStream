@@ -3,8 +3,9 @@ class AppDelegate < PM::Delegate
 
   def on_load(app, options)
     initialize_storage
-    initialize_audio
-    open HomeScreen.new(nav_bar: true)
+    initialize_audio do
+      open HomeScreen.new(nav_bar: true)
+    end
   end
 
   def initialize_storage
@@ -14,9 +15,10 @@ class AppDelegate < PM::Delegate
     end
   end
 
-  def initialize_audio
+  def initialize_audio(&block)
     App.states[:audio_context] = Pachelbel::AudioContext.new
     App.states[:compass_streamer] = CompassStreamer.new App.states[:audio_context]
     App.states[:clock_streamer] = ClockStreamer.new App.states[:audio_context]
+    App.states[:audio_context].on_ready(&block)
   end
 end
