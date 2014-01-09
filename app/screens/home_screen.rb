@@ -7,6 +7,7 @@ class HomeScreen < PM::FormotionScreen
       s.form.sections[1].rows[0].on_tap { s.compass_tapped }
       s.form.sections[1].rows[1].on_tap { s.clock_tapped }
       s.form.sections[1].rows[2].on_tap { s.magnetometer_tapped }
+      s.form.sections[1].rows[3].on_tap { s.accelerometer_tapped }
     end
   end
 
@@ -24,6 +25,7 @@ class HomeScreen < PM::FormotionScreen
     hash[:sections][1][:rows][0] = { title: 'Compass', key: :compass, type: :subform, image: 'compass' }
     hash[:sections][1][:rows][1] = { title: 'Clock', key: :clock, type: :subform, image: 'clock' }
     hash[:sections][1][:rows][2] = { title: 'Magnetometer', key: :magnetometer, type: :subform, image: 'magnetometer' }
+    hash[:sections][1][:rows][3] = { title: 'Accelerometer', key: :accelerometer, type: :subform, image: 'accelerometer' }
 
     return hash
   end
@@ -41,5 +43,9 @@ class HomeScreen < PM::FormotionScreen
 
   def magnetometer_tapped
     open MagnetometerScreen.new
+  end
+
+  def accelerometer_tapped
+    open AccelerometerScreen.new
   end
 end
