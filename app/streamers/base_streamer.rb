@@ -5,7 +5,7 @@ class BaseStreamer
       @gain_node = @audio_context.createGain
       @gain_node.gain = App::Persistence[:"#{__key__}_volume"]
       @gain_node.connect(@audio_context.destination) if enabled?
-      on_ready
+      on_ready if respond_to? :on_ready
     end
   end
 
