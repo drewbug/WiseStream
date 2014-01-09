@@ -3,6 +3,7 @@ class AppDelegate < PM::Delegate
 
   def on_load(app, options)
     initialize_storage
+    initialize_sensors
     initialize_audio do
       open HomeScreen.new(nav_bar: true)
     end
@@ -13,6 +14,10 @@ class AppDelegate < PM::Delegate
      clock_enabled: false, clock_volume: 0.75}.each do |key, value|
       App::Persistence[key] = value if App::Persistence[key].nil?
     end
+  end
+
+  def initialize_sensors
+    App.states[:motion_manager] = CMMotionManager.new
   end
 
   def initialize_audio(&block)

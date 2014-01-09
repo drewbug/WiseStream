@@ -10,4 +10,5 @@ Motion::Project::App.setup do |app|
   app.name = 'WiseStream'
   app.info_plist['UIBackgroundModes'] = ['audio']
   app.deployment_target = '6.1'
+  app.frameworks << 'CoreMotion'
 end
