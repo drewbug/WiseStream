@@ -7,6 +7,7 @@ class BaseStreamer
       @gain_node.connect(@audio_context.destination) if enabled?
       on_ready if respond_to? :on_ready
     end
+    on_init if respond_to? :on_init
   end
 
   def volume
