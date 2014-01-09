@@ -11,4 +11,5 @@ Motion::Project::App.setup do |app|
   app.info_plist['UIBackgroundModes'] = ['audio']
   app.deployment_target = '6.1'
   app.frameworks << 'CoreMotion'
+  app.pods { pod 'UI7Kit' }
 end

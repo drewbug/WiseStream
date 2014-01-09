@@ -2,6 +2,7 @@ class AppDelegate < PM::Delegate
   status_bar true, animation: :none
 
   def on_load(app, options)
+    UI7Kit.patchIfNeeded
     initialize_storage
     initialize_sensors
     open HomeScreen.new(nav_bar: true)
