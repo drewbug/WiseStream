@@ -4,8 +4,10 @@ class AppDelegate < PM::Delegate
   def on_load(app, options)
     initialize_storage
     initialize_sensors
+    open HomeScreen.new(nav_bar: true)
+    alert = UIAlertView.new.tap { |a| a.title = 'Loading...'; a.message = 'Please wait...' }.show
     initialize_audio do
-      open HomeScreen.new(nav_bar: true)
+      alert.dismissWithClickedButtonIndex 0, animated: true
     end
   end
 
