@@ -14,7 +14,8 @@ class AppDelegate < PM::Delegate
   def initialize_storage
     {compass_enabled: false, compass_volume: 0.75,
      clock_enabled: false, clock_volume: 0.75,
-     magnetometer_enabled: false, magnetometer_volume: 0.75}.each do |key, value|
+     magnetometer_enabled: false, magnetometer_volume: 0.75,
+     accelerometer_enabled: false, accelerometer_volume: 0.75}.each do |key, value|
       App::Persistence[key] = value if App::Persistence[key].nil?
     end
   end
@@ -28,6 +29,7 @@ class AppDelegate < PM::Delegate
     App.states[:compass_streamer] = CompassStreamer.new App.states[:audio_context]
     App.states[:clock_streamer] = ClockStreamer.new App.states[:audio_context]
     App.states[:magnetometer_streamer] = MagnetometerStreamer.new App.states[:audio_context]
+    App.states[:accelerometer_streamer] = AccelerometerStreamer.new App.states[:audio_context]
     App.states[:audio_context].on_ready(&block)
   end
 end
