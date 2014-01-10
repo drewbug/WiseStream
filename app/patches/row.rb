@@ -7,5 +7,9 @@ module Formotion
     def on_slide(&block)
       self.object.on_slide(&block)
     end
+
+    def on_input(&block)
+      self.object.on_input(&block)
+    end
   end
 end
