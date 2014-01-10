@@ -23,6 +23,7 @@ class AppDelegate < PM::Delegate
 
   def initialize_sensors
     App.states[:motion_manager] = CMMotionManager.new
+    App.states[:location_manager] = CLLocationManager.new
   end
 
   def initialize_audio(&block)
