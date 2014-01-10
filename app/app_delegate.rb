@@ -13,7 +13,7 @@ class AppDelegate < PM::Delegate
   end
 
   def initialize_storage
-    {compass_enabled: false, compass_volume: 0.75,
+    {compass_enabled: false, compass_volume: 0.75, compass_freq180: 400.0, compass_freq0360: 1200.0,
      clock_enabled: false, clock_volume: 0.75,
      magnetometer_enabled: false, magnetometer_volume: 0.75,
      accelerometer_enabled: false, accelerometer_volume: 0.75}.each do |key, value|
